@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating FAB Widget</title>
+  <style>
+    /* Floating Button Container */
+    #fab-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    /* Floating Action Button */
+    #fab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366; /* WhatsApp Green */
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #fab:hover {
+      transform: scale(1.1);
+    }
+
+    /* FAB Icon */
+    #fab img {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Tooltip Styling */
+    #tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 70px;
+      right: 10px;
+      background-color: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #fab-container:hover #tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Button Container -->
+  <div id="fab-container">
+    <!-- Tooltip -->
+    <div id="tooltip">Chat on WhatsApp</div>
+
+    <!-- Floating Action Button -->
+    <a href="https://wa.me/918882702020" target="_blank" id="fab">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+  </div>
+
+  <script>
+    // Optional: You can add additional functionality here if needed
+    document.getElementById("fab").addEventListener("click", () => {
+      console.log("FAB clicked!");
+    });
+  </script>
+</body>
+</html>
