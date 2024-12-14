@@ -56,25 +56,78 @@
       visibility: visible;
       opacity: 1;
     }
+
+    /* Form Container */
+    #form-container {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    #form-container input,
+    #form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #form-container button {
+      padding: 10px 15px;
+      background-color: #25d366; /* WhatsApp Green */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #form-container button:hover {
+      background-color: #128c7e;
+    }
   </style>
 </head>
 <body>
   <!-- Floating Button Container -->
   <div id="fab-container">
     <!-- Tooltip -->
-    <div id="tooltip">Chat on WhatsApp</div>
+    <div id="tooltip">Open Form</div>
 
     <!-- Floating Action Button -->
-    <a href="https://wa.me/918882702020" target="_blank" id="fab">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <a href="#" id="fab">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Open Form">
     </a>
   </div>
 
+  <!-- Form Container -->
+  <div id="form-container">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
   <script>
-    // Optional: You can add additional functionality here if needed
-    document.getElementById("fab").addEventListener("click", () => {
-      console.log("FAB clicked!");
+    // Open the form when the FAB is clicked
+    document.getElementById("fab").addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      const formContainer = document.getElementById("form-container");
+      formContainer.style.display = 'block'; // Show the form
     });
+
+    // Optional: You can add functionality to close the form when clicking outside of it or on a close button
   </script>
 </body>
 </html>
