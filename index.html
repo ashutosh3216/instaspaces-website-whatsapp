@@ -94,6 +94,24 @@
     #form-container button:hover {
       background-color: #128c7e;
     }
+
+    /* Hide iframe on mobile */
+    #iframe-container {
+      display: none;
+    }
+
+    /* Media query for large screens */
+    @media (min-width: 768px) {
+      #fab-container {
+        display: none; /* Hide the WhatsApp FAB on large screens */
+      }
+
+      #iframe-container {
+        display: block;
+        width: 100%;
+        height: 500px; /* Adjust iframe size as needed */
+      }
+    }
   </style>
 </head>
 <body>
@@ -117,6 +135,11 @@
       <textarea placeholder="Your Message" rows="4" required></textarea>
       <button type="submit">Submit</button>
     </form>
+  </div>
+
+  <!-- Iframe Container (visible only on large screens) -->
+  <div id="iframe-container">
+    <iframe src="https://page.botpenguin.com/668fa50399f33102a0a9e39a/6641fd1f240d7122ecdb038a" frameborder="0"></iframe>
   </div>
 
   <script>
