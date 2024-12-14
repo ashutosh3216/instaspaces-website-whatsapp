@@ -5,11 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Floating FAB Widget</title>
   <style>
-    /* Floating Button Container */
+    /* Full-width and height with transparent background */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    /* Floating Button Container - Positioned at bottom-left */
     #fab-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      left: 20px;
       z-index: 1000;
     }
 
@@ -43,7 +52,7 @@
       opacity: 0;
       position: absolute;
       bottom: 70px;
-      right: 10px;
+      left: 10px;
       background-color: #333;
       color: #fff;
       padding: 8px 12px;
@@ -115,42 +124,47 @@
   </style>
 </head>
 <body>
-  <!-- Floating Button Container -->
-  <div id="fab-container">
-    <!-- Tooltip -->
-    <div id="tooltip">Open Form</div>
+<!-- Floating Button Container -->
+<div id="fab-container">
+  <!-- Tooltip -->
+  <div id="tooltip">Open Form</div>
 
-    <!-- Floating Action Button -->
-    <a href="#" id="fab">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Open Form">
-    </a>
-  </div>
+  <!-- Floating Action Button -->
+  <a href="#" id="fab">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Open Form">
+  </a>
+</div>
 
-  <!-- Form Container -->
-  <div id="form-container">
-    <h2>Contact Us</h2>
-    <form id="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+<!-- Form Container -->
+<div id="form-container">
+  <h2>Contact Us</h2>
+  <form id="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
 
-  <!-- Iframe Container (visible only on large screens) -->
-  <div id="iframe-container">
-    <iframe src="https://page.botpenguin.com/668fa50399f33102a0a9e39a/6641fd1f240d7122ecdb038a" frameborder="0"></iframe>
-  </div>
+<!-- Messenger Widget Script (Only for Desktop) -->
+<script>
+  // Open the contact form when the FAB is clicked
+  document.getElementById('fab').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    var formContainer = document.getElementById('form-container');
+    formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+  });
 
-  <script>
-    // Open the form when the FAB is clicked
-    document.getElementById("fab").addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default link behavior
-      const formContainer = document.getElementById("form-container");
-      formContainer.style.display = 'block'; // Show the form
-    });
+  // Load Messenger widget script only for desktop
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    var script = document.createElement('script');
+    script.id = 'messenger-widget-b';
+    script.src = 'https://cdn.botpenguin.com/website-bot.js';
+    script.defer = true;
+    script.innerHTML = '668fa50399f33102a0a9e39a,6641fd1f240d7122ecdb038a';
+    document.body.appendChild(script);
+  }
+</script>
 
-    // Optional: You can add functionality to close the form when clicking outside of it or on a close button
-  </script>
 </body>
 </html>
